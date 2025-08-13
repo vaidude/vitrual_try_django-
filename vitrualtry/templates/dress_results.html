@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dress Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-semibold text-center mb-8">Dress Results for {{ request.POST.style|title }}</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {% for dress in dresses %}
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+                    <img src="{{ dress.thumbnail }}" alt="{{ dress.title }}" class="w-full h-64 object-cover rounded-t-lg">
+                    <div class="p-4">
+                        <h2 class="text-lg font-semibold mb-2">{{ dress.title }}</h2>
+                        <p class="text-gray-600 mb-4">{{ dress.price }}</p>
+                        <form action="{% url 'try_on_page' %}" method="get">
+                            <input type="hidden" name="dress_url" value="{{ dress.thumbnail }}">
+                            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200">Try On</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

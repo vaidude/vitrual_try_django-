@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Dress Style</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h1 class="text-2xl font-semibold text-center mb-6">Select Dress Style</h1>
+        <form method="POST" action="{% url 'dress_search' %}">
+            {% csrf_token %}
+            
+            <div class="mb-4">
+                <label for="style" class="block text-gray-700 font-medium mb-2">Choose a style:</label>
+                <select name="style" id="style" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="casual">Casual</option>
+                    <option value="party">Party</option>
+                    <!-- Add more styles as needed -->
+                </select>
+            </div>
+
+            <div class="mb-6">
+                <label for="gender" class="block text-gray-700 font-medium mb-2">Select Gender:</label>
+                <select name="gender" id="gender" required class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-colors duration-200">Search</button>
+        </form>
+    </div>
+</body>
+</html>

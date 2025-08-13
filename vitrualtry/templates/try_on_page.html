@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Try On Dress</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full text-center">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-6">Try On Dress</h1>
+        
+        <img src="{{ dress_url }}" alt="Selected Dress" class="w-72 h-auto mx-auto rounded-lg shadow mb-6">
+
+        <form method="post" action="" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+            <div>
+                <label for="avatar_image" class="block text-gray-700 font-medium mb-2">Upload Your Avatar Image:</label>
+                <input type="file" name="avatar_image" id="avatar_image" required class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500">
+            </div>
+
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-200">
+                Submit
+            </button>
+        </form>
+    </div>
+</body>
+</html>
